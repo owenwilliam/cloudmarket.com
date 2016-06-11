@@ -38,6 +38,18 @@
 			<artifactId>zipcloud-core</artifactId>
 		</dependency>
 
+   <!--start: 解决：java.lang.NoClassDefFoundError: Lcom/owen/cloudmarket/core/services/IMarketService; -->
+	<dependency>
+			<groupId>edu.zipcloud.cloudstreetmarket</groupId>
+			<artifactId>cloudstreetmarket-core</artifactId>
+			<version>${csm.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+ <!-- end -->
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
