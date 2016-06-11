@@ -9,7 +9,10 @@ import org.springframework.web.servlet.mvc.WebContentInterceptor;
 
 /**
  * 总的控制层，该层定义的东西与子类分享。如，在dispatcher-context.xml文件中设置
- * @author OwenWilliam
+ * 
+ * @author OwenWilliam 2016-6-10
+ * @since
+ * @version V2.X.X
  *
  */
 public class CloudstreetWebAppWCI extends WebContentInterceptor
@@ -19,7 +22,7 @@ public class CloudstreetWebAppWCI extends WebContentInterceptor
 	{
 		setRequireSession(false);
 		setCacheSeconds(120);
-		setSupportedMethods("GET","POST","OPTIONS","HEAD");
+		setSupportedMethods("GET", "POST", "OPTIONS", "HEAD");
 	}
 
 	@Override
@@ -37,7 +40,7 @@ public class CloudstreetWebAppWCI extends WebContentInterceptor
 			ModelAndView modelAndView) throws Exception
 	{
 		// TODO Auto-generated method stub
-		//super.postHandle(request, response, handler, modelAndView);
+		// super.postHandle(request, response, handler, modelAndView);
 	}
 
 	@Override
@@ -46,9 +49,7 @@ public class CloudstreetWebAppWCI extends WebContentInterceptor
 			throws Exception
 	{
 		// TODO Auto-generated method stub
-		//super.afterCompletion(request, response, handler, ex);
+		// super.afterCompletion(request, response, handler, ex);
 	}
-	
-	
-	
+
 }

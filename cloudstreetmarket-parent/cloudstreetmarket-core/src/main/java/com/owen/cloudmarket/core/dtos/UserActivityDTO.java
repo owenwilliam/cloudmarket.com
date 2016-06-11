@@ -8,7 +8,9 @@ import java.util.Date;
 import com.owen.cloudmarket.core.enums.Action;
 /**
  * 用户信息
- * @author OwenWilliam
+ * @author OwenWilliam 2016-6-10
+ * @since
+ * @version v2.x.x
  *
  */
 public class UserActivityDTO

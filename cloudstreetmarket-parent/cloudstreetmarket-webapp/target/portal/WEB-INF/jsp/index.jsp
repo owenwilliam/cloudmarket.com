@@ -192,8 +192,8 @@
 										<script>
 											market = {};
 											market.marketShortName = '${market.marketShortName}';
-											market.latestValue = ('${market.latestValue}').toFixed(2);
-											market.latestChange = ('${market.latestChange}*100').toFixed(2);
+											market.latestValue = (${market.latestValue}).toFixed(2);
+											market.latestChange = (${market.latestChange}*100).toFixed(2);
 											dailyMarketsActivity.push(market);
 										</script>
 								 	</c:forEach>
@@ -241,7 +241,7 @@
 										userActivity.userActionPresentTense = '${activity.userAction.presentTense}';
 										userActivity.amount = ${activity.amount};
 										userActivity.valueShortId = '${activity.valueShortId}';
-										userActivity.price = ('${activity.price}').toFixed(2);
+										userActivity.price = (${activity.price}).toFixed(2);
 										userActivities.push(userActivity);
 								  </script>
 						      </c:forEach>

@@ -11,6 +11,13 @@ import org.springframework.stereotype.Service;
 import com.owen.cloudmarket.core.dtos.UserActivityDTO;
 import com.owen.cloudmarket.core.enums.Action;
 
+/**
+ * 
+ * @author OwenWilliam 2016-6-11
+ * @since
+ * @version v3.x.x
+ *
+ */
 @Service
 public class DummyCommunityServiceImpl implements ICommunityService
 {
