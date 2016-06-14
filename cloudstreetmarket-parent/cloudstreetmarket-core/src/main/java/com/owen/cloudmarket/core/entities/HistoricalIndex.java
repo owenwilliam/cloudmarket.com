@@ -22,7 +22,7 @@ public class HistoricalIndex extends Historic implements Serializable
 {
 
 	private static final long serialVersionUID = -802306391915956578L;
-
+	public static final String DISCR = "idx";
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "index_code")
 	private Index index;

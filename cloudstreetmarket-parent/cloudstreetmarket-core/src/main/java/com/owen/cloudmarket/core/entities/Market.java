@@ -6,10 +6,14 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.owen.cloudmarket.core.enums.MarketCode;
 
 /**
  * 市场
@@ -27,21 +31,22 @@ public class Market implements Serializable
 	private static final long serialVersionUID = -6433721069248439324L;
 
 	@Id
-	private String id;
+	@Enumerated(EnumType.STRING)
+	private MarketCode code;
 
 	private String name;
 
 	@OneToMany(mappedBy = "market", cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 	private Set<Index> indices = new LinkedHashSet<>();
 
-	public String getId()
+	public MarketCode getCode()
 	{
-		return id;
+		return code;
 	}
 
-	public void setId(String id)
+	public void setCode(MarketCode code)
 	{
-		this.id = id;
+		this.code = code;
 	}
 
 	public String getName()
@@ -63,4 +68,5 @@ public class Market implements Serializable
 	{
 		this.indices = indices;
 	}
+
 }

@@ -1,5 +1,6 @@
 package com.owen.cloudmarket.core.entities;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -41,18 +42,18 @@ public abstract class Historic
 	@GeneratedValue
 	private int id;
 
-	private double open;
+	private BigDecimal open;
 
-	private double high;
+	private BigDecimal high;
 
-	private double low;
+	private BigDecimal low;
 
-	private double close;
+	private BigDecimal close;
 
 	private double volume;
 
 	@Column(name = "adj_close")
-	private double adjClose;
+	private BigDecimal adjClose;
 
 	@Column(name = "change_percent")
 	private double changePercent;
@@ -79,42 +80,42 @@ public abstract class Historic
 		this.id = id;
 	}
 
-	public double getOpen()
+	public BigDecimal getOpen()
 	{
 		return open;
 	}
 
-	public void setOpen(double open)
+	public void setOpen(BigDecimal open)
 	{
 		this.open = open;
 	}
 
-	public double getHigh()
+	public BigDecimal getHigh()
 	{
 		return high;
 	}
 
-	public void setHigh(double high)
+	public void setHigh(BigDecimal high)
 	{
 		this.high = high;
 	}
 
-	public double getLow()
+	public BigDecimal getLow()
 	{
 		return low;
 	}
 
-	public void setLow(double low)
+	public void setLow(BigDecimal low)
 	{
 		this.low = low;
 	}
 
-	public double getClose()
+	public BigDecimal getClose()
 	{
 		return close;
 	}
 
-	public void setClose(double close)
+	public void setClose(BigDecimal close)
 	{
 		this.close = close;
 	}
@@ -129,12 +130,12 @@ public abstract class Historic
 		this.volume = volume;
 	}
 
-	public double getAdjClose()
+	public BigDecimal getAdjClose()
 	{
 		return adjClose;
 	}
 
-	public void setAdjClose(double adjClose)
+	public void setAdjClose(BigDecimal adjClose)
 	{
 		this.adjClose = adjClose;
 	}

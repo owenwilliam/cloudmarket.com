@@ -28,7 +28,7 @@ import com.owen.cloudmarket.core.enums.Action;
 public class Transaction implements Serializable
 {
 
-	private static final long serialVersionUID = -6433721069248439324L;
+	private static final long serialVersionUID = -6206553357043559298L;
 	@Id
 	@GeneratedValue
 	private int id;

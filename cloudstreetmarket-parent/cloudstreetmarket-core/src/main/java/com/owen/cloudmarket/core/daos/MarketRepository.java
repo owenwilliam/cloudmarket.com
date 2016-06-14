@@ -3,6 +3,7 @@ package com.owen.cloudmarket.core.daos;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.owen.cloudmarket.core.entities.Market;
+import com.owen.cloudmarket.core.enums.MarketCode;
 
 /**
  * 市场仓库
@@ -15,4 +16,5 @@ import com.owen.cloudmarket.core.entities.Market;
 public interface MarketRepository extends JpaRepository<Market, String>
 {
 
+	Market findByCode(MarketCode code);
 }

@@ -1,9 +1,14 @@
 package com.owen.cloudmarket.core.services;
 
-import java.util.List;
+import java.util.Date;
 
-import com.owen.cloudmarket.core.dtos.DailyMarketActivityDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.owen.cloudmarket.core.dtos.HistoProductDTO;
 import com.owen.cloudmarket.core.dtos.IndexOverviewDTO;
+import com.owen.cloudmarket.core.enums.MarketCode;
+import com.owen.cloudmarket.core.enums.QuotesInterval;
 
 /**
  * 市场逻辑处理
@@ -21,7 +26,7 @@ public interface IMarketService
 	 * @param code
 	 * @return
 	 */
-	DailyMarketActivityDTO getLastDayIndexActivity(String code);
+	Page<IndexOverviewDTO> getLastDayIndicesOverview(MarketCode market, Pageable pageable);
 
 	/**
 	 * 最近查看
@@ -29,5 +34,8 @@ public interface IMarketService
 	 * @param market
 	 * @return
 	 */
-	List<IndexOverviewDTO> getLastDayIndexOverview(String market);
+	
+	Page<IndexOverviewDTO> getLastDayIndicesOverview(Pageable pageable);
+	
+	HistoProductDTO getHistoIndex(String code, MarketCode market, Date fromDate, Date toDate, QuotesInterval interval);
 }

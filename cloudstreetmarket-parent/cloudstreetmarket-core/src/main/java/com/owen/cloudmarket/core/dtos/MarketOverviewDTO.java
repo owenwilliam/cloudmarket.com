@@ -2,6 +2,8 @@ package com.owen.cloudmarket.core.dtos;
 
 import java.math.BigDecimal;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 /**
  * 市场信息
  * 
@@ -10,6 +12,7 @@ import java.math.BigDecimal;
  * @versionv 2.x.x
  *
  */
+@XStreamAlias("market")
 public class MarketOverviewDTO
 {
 	private String marketShortName;
@@ -20,7 +23,7 @@ public class MarketOverviewDTO
 	public MarketOverviewDTO(String marketShortName, String marketId,
 			BigDecimal latestValue, BigDecimal latestChange)
 	{
-		super();
+
 		this.marketShortName = marketShortName;
 		this.marketId = marketId;
 		this.latestValue = latestValue;

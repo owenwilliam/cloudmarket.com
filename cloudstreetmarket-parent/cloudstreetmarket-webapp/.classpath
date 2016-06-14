@@ -36,6 +36,5 @@
 	<classpathentry kind="lib" path="src/main/webapp/lib/el-api.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/lib/servlet-api.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/cloudstreetmarket-core"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

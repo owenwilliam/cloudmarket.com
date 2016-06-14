@@ -2,6 +2,9 @@ package com.owen.cloudmarket.core.daos;
 
 import java.util.Date;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.owen.cloudmarket.core.entities.Transaction;
 import com.owen.cloudmarket.core.entities.User;
 
@@ -16,35 +19,9 @@ import com.owen.cloudmarket.core.entities.User;
 public interface TransactionRepository
 {
 
-	/**
-	 * 查找所有的
-	 * 
-	 * @return
-	 */
-	Iterable<Transaction> findAll();
-
-	/**
-	 * 查找对应用户的
-	 * 
-	 * @param user
-	 * @return
-	 */
+	Page<Transaction> findAll(Pageable pageable);
 	Iterable<Transaction> findByUser(User user);
-
-	/**
-	 * 查找当前交易的,通过时间
-	 * 
-	 * @param from
-	 * @return
-	 */
-	Iterable<Transaction> findRecentTransactions(Date from);
-
-	/**
-	 * 查找当前交易的通过nb号
-	 * 
-	 * @param nb
-	 * @return
-	 */
-	Iterable<Transaction> findRecentTransactions(int nb);
+	Iterable<Transaction> findTransactions(Date from);
+	Iterable<Transaction> findTransactions(int nb);
 
 }

@@ -11,15 +11,21 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.owen.cloudmarket.core.daos.HistoricalIndexRepository;
-import com.owen.cloudmarket.core.daos.IndexProductRepository;
+import com.owen.cloudmarket.core.daos.IndexRepository;
 import com.owen.cloudmarket.core.daos.MarketRepository;
-import com.owen.cloudmarket.core.dtos.DailyMarketActivityDTO;
+import com.owen.cloudmarket.core.dtos.HistoProductDTO;
 import com.owen.cloudmarket.core.dtos.IndexOverviewDTO;
 import com.owen.cloudmarket.core.entities.HistoricalIndex;
+import com.owen.cloudmarket.core.entities.Index;
 import com.owen.cloudmarket.core.entities.Market;
+import com.owen.cloudmarket.core.enums.MarketCode;
+import com.owen.cloudmarket.core.enums.QuotesInterval;
 
 /**
  * 
@@ -33,7 +39,7 @@ import com.owen.cloudmarket.core.entities.Market;
 public class MarketServiceImpl implements IMarketService
 {
 
-	private DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+	private static final DateFormat dateFormat = new SimpleDateFormat("HH:mm");
 
 	@Autowired
 	private MarketRepository marketRepository;
@@ -42,54 +48,68 @@ public class MarketServiceImpl implements IMarketService
 	private HistoricalIndexRepository historicalIndexRepository;
 
 	@Autowired
-	private IndexProductRepository indexProductRepository;
+	private IndexRepository indexRepository;
 
 	@Override
-	public DailyMarketActivityDTO getLastDayIndexActivity(String code)
+	public HistoProductDTO getHistoIndex(String code, MarketCode market,
+			Date fromDate, Date toDate, QuotesInterval interval)
 	{
 		Map<String, BigDecimal> map = new LinkedHashMap<>();
-		Iterator<HistoricalIndex> histoList = historicalIndexRepository
-				.findLastIntraDay(code).iterator();
-		Date lastDate = null;
-		HistoricalIndex lastValue = null;
+		Iterator<HistoricalIndex> histoList = null;
+		if (fromDate == null)
+		{
+			histoList = historicalIndexRepository.findLastIntraDay(code)
+					.iterator();
+		} else
+		{
+			histoList = historicalIndexRepository.findHistoric(code, market,
+					fromDate, toDate, interval).iterator();
+		}
 
+		Date firstDate = null;
+		HistoricalIndex lastValue = null;
 		while (histoList.hasNext())
 		{
 			lastValue = histoList.next();
-			lastDate = lastValue.getToDate();
-			map.put(dateFormat.format(lastDate),
-					new BigDecimal(lastValue.getClose()));
+			if (firstDate == null)
+			{
+				firstDate = lastValue.getFromDate();
+			}
+			map.put(dateFormat.format(lastValue.getToDate()),
+					lastValue.getClose());
 		}
 
-		return new DailyMarketActivityDTO(lastValue.getIndex().getName(), code,
-				map, lastDate);
+		return (lastValue != null) ? new HistoProductDTO(lastValue.getIndex()
+				.getName(), code, map, firstDate, lastValue.getToDate()) : null;
 	}
 
 	@Override
-	public List<IndexOverviewDTO> getLastDayIndexOverview(String market)
+	public Page<IndexOverviewDTO> getLastDayIndicesOverview(MarketCode market,
+			Pageable pageable)
 	{
+		Market marketEntity = marketRepository.findByCode(market);
+		Page<Index> indices = indexRepository.findByMarket(marketEntity,
+				pageable);
 
-		List<IndexOverviewDTO> result = new LinkedList<IndexOverviewDTO>();
-		Market marketEntity = marketRepository.findOne(market);
-
-		if (marketEntity != null)
+		List<IndexOverviewDTO> result = new LinkedList<>();
+		for (Index index : indices)
 		{
-			indexProductRepository
-					.findByMarket(marketEntity)
-					.forEach(
-							index -> {
-								HistoricalIndex histo = historicalIndexRepository
-										.findLastHistoric(index.getCode());
-								result.add(new IndexOverviewDTO(
-										index.getName(),
-										index.getCode(),
-										new BigDecimal(histo.getClose()),
-										new BigDecimal(
-												histo.getChangePercent() * 0.01)));
-							});
+			result.add(IndexOverviewDTO.build(index));
 		}
 
-		return result;
+		return new PageImpl<>(result, pageable, indices.getTotalElements());
+	}
+
+	@Override
+	public Page<IndexOverviewDTO> getLastDayIndicesOverview(Pageable pageable)
+	{
+		Page<Index> indices = indexRepository.findAll(pageable);
+		List<IndexOverviewDTO> result = new LinkedList<>();
+		for (Index index : indices)
+		{
+			result.add(IndexOverviewDTO.build(index));
+		}
+		return new PageImpl<>(result, pageable, indices.getTotalElements());
 	}
 
 }

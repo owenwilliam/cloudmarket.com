@@ -36,6 +36,30 @@ public abstract class Quote
 
 	private double last;
 
+	private double high;
+
+	public double getHigh()
+	{
+		return high;
+	}
+
+	public void setHigh(double high)
+	{
+		this.high = high;
+	}
+
+	public double getLow()
+	{
+		return low;
+	}
+
+	public void setLow(double low)
+	{
+		this.low = low;
+	}
+
+	private double low;
+
 	public Integer getId()
 	{
 		return id;
