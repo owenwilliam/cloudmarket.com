@@ -16,8 +16,7 @@ import javax.persistence.ManyToOne;
  *
  */
 @Entity
-// 父类添加的一个描述字段中显示 idx
-@DiscriminatorValue("idx")
+@DiscriminatorValue(HistoricalIndex.DISCR)
 public class HistoricalIndex extends Historic implements Serializable
 {
 

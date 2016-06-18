@@ -1,5 +1,7 @@
 package com.owen.cloudmarket.core.daos;
 
+import java.util.Set;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +24,7 @@ public interface UserRepository extends JpaRepository<User, String>
 	 * @param username
 	 * @return
 	 */
-	User findByUserName(String username);
+	//User findByUserName(String username);
 
 	/**
 	 * 通过用户名和用户密码找用户
@@ -31,6 +33,9 @@ public interface UserRepository extends JpaRepository<User, String>
 	 * @param password
 	 * @return
 	 */
-	User findByUserNameAndPassword(String username, String password);
+	//User findByUserNameAndPassword(String username, String password);
+	
+	Set<User> findByEmail(String email);
+	User findByUsername(String username);
 
 }

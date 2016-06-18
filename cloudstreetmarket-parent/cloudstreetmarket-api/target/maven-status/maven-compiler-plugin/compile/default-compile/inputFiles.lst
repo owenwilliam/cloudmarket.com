@@ -1,6 +1,13 @@
+E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\authentication\CustomBasicAuthenticationEntryPoint.java
 E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\swagger\SwaggerConfig.java
 E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\controllers\IndexController.java
-E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\controllers\CommunityController.java
-E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\controllers\ProductController.java
+E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\exceptions\RestExceptionHandler.java
 E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\controllers\StockProductController.java
+E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\exceptions\ErrorInfo.java
+E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\controllers\MonitoringController.java
+E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\controllers\CommunityController.java
+E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\controllers\SignUpController.java
+E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\controllers\ProductController.java
 E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\controllers\CloudstreetApiWCI.java
+E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\controllers\ImageController.java
+E:\workspace\cloudmarket.com\cloudstreetmarket-parent\cloudstreetmarket-api\src\main\java\com\owen\cloudmarket\api\signin\SignInAdapterImpl.java

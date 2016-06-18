@@ -1,10 +1,10 @@
-cloudStreetMarketApp.factory("indicesGraphFactory", function ($http) {
+cloudStreetMarketApp.factory("indicesGraphFactory", function (httpAuth) {
     return {
         getHistoIndex: function (market, index) {
-        	return $http.get("/api/indices/"+market+"/"+index+"/histo.json");
+        	return httpAuth.get("/api/indices/"+market+"/"+index+"/histo.json");
         },
         getIndices: function (market) {
-        	return $http.get("/api/indices/"+market+".json?ps=6");
+        	return httpAuth.get("/api/indices/"+market+".json?ps=6");
         }
     }
 });
@@ -12,11 +12,14 @@ cloudStreetMarketApp.factory("indicesGraphFactory", function ($http) {
 cloudStreetMarketApp.controller('homeFinancialGraphController', function ($scope, indicesGraphFactory){
 	
 	$scope.init = function () {
+
 		var indicesPromise = indicesGraphFactory.getIndices($scope.preferedMarket);
 		indicesPromise.success(function(dataIndices, status, headers, config) {
 			$scope.indicesForGraph = dataIndices.content;
-			$scope.drawGraph();
-	    });
+			if($scope.indicesForGraph){
+				$scope.drawGraph();
+			}
+	    })
 
 		$('.form-control').on('change', function () {
 			$('#landingGraphContainer svg').remove();
